@@ -9,7 +9,7 @@ let studentCollection;
 
 MongoClient.connect(url, { useUnifiedTopology: true })
   .then(client => {
-    console.log('Connected to Database')
+    console.log('Pomyslnie polaczono z MongoDB')
     db = client.db('Cluster0')
     studentCollection = db.collection('studenci')
   })
@@ -28,7 +28,6 @@ app.get('/', (req, res) => {
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.post('studenci', (req, res) => {
-
   studentCollection.insertOne(req.body)
     .then(result => {
       res.redirect('/')
